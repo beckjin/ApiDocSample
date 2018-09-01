@@ -1,0 +1,209 @@
+﻿{
+  "x-generator": "NSwag v11.18.7.0 (NJsonSchema v9.10.70.0 (Newtonsoft.Json v9.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "T.WebApi.Swagger接口文档",
+    "description": "T.WebApi.Swagger接口文档",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/User/Index": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Index",
+        "operationId": "User_Index",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/User/GetList": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "获取用户列表",
+        "operationId": "User_GetList",
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/User/Get": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "根据单个用户",
+        "operationId": "User_Get",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "用户id",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            }
+          }
+        }
+      }
+    },
+    "/User/Add": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "添加用户",
+        "operationId": "User_Add",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUserRequest"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AddUserResponse"
+            }
+          }
+        }
+      }
+    },
+    "/User/Delete": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "删除用户",
+        "operationId": "User_Delete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "用户id",
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserDto": {
+      "type": "object",
+      "description": "用户信息",
+      "additionalProperties": false,
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "id"
+        },
+        "Name": {
+          "type": "string",
+          "description": "姓名"
+        },
+        "Account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "Password": {
+          "type": "string",
+          "description": "密码"
+        }
+      }
+    },
+    "AddUserRequest": {
+      "type": "object",
+      "description": "添加请求值",
+      "additionalProperties": false,
+      "required": [
+        "Name",
+        "Account",
+        "Password"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "姓名",
+          "minLength": 1
+        },
+        "Account": {
+          "type": "string",
+          "description": "账号",
+          "minLength": 1
+        },
+        "Password": {
+          "type": "string",
+          "description": "密码",
+          "minLength": 1
+        }
+      }
+    },
+    "AddUserResponse": {
+      "type": "object",
+      "description": "添加返回值",
+      "additionalProperties": false,
+      "properties": {
+        "User": {
+          "description": "用户实体",
+          "allOf": [
+            {
+              "$ref": "#/definitions/UserDto"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
