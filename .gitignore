@@ -43,3 +43,6 @@ avatar/*.jpg
 images/tmp/*
 .vs/*
 MD.ImageMerge/lib/tmp/*
+/.scannerwork/.sonar_lock
+/.scannerwork/report-task.txt
+/sonar-project.properties
